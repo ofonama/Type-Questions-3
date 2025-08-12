@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Questions</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" 
+    rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" 
+    crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="">
+    <div class="container">
+            <h1 class="fw-normal px-2 pt-3 pb-3 border-bottom">Set your Questions</h1>
+        <form action="">
+            <div class="row">
+                <div class="col col-md-12 first">
+                    <label for="Questions1" class="form-label">
+                        Set Question 1:
+                    </label>
+                    <textarea name="Questions1" class="form-control p-2 card" rows="5" cols="40" id="Questions1"></textarea>
+                    <small id="invlQuestMess1" class="text-danger"></small><br>
+
+                    <label for="correctAnswer" class="form-label">
+                        Answer1:
+                    </label>
+                    <input type="text" name="correctAnswer" class="form-control" id="correctAnswer1">
+                    <small id="invlAnsMess1" class="text-danger"></small><br>
+                </div>
+
+                <div class="col col-md-12 second">
+                    <label for="Questions2" class="form-label">
+                        Set Question 2:
+                    </label>
+                    <textarea name="Questions" rows="5" cols="40" class="form-control p-2 card" id="Questions2"></textarea>
+                    <small id="invlQuestMess2" class="text-danger"></small><br>
+
+                    <label for="correctAnswer2" class="form-label">
+                        Answer2:
+                    </label>
+                    <input type="text" name="correctAnswer" class="form-control" id="correctAnswer2">
+                    <small id="invlAnsMess2" class="text-danger"></small><br>
+                </div>
+            </div>
+                
+            <div class="third col-12">
+                <label for="Questions3" class="form-label">
+                    Set Question 3
+                </label>
+                <textarea name="Questions" rows="5" cols="40" class="form-control p-2 card" id="Questions3"></textarea>
+                <small id="invlQuestMess3" class="text-danger"></small><br>
+
+                <label for="correctAnswer3" class="form-label">
+                    Answer3:
+                </label>
+                <input type="text" name="correctAnswer" class="form-control" id="correctAnswer3">
+                <small id="invlAnsMess3" class="text-danger"></small><br>
+            </div>
+            <div class="d-flex justify-content-center align-items-center">
+                <button href="#" class="mb-4 btn btn-primary" id="Submit">Submit</button>
+                <p id="demo" style="display: none;">Welcome!</p>
+            </div>
+        </form> 
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" 
+    integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" 
+    crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

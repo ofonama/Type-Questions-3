@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>this</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" 
+    rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" 
+    crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&amp;family=Sacramento&amp;display=swap" 
+    rel="stylesheet">
+    <style>
+
+    </style>
+</head>
+<body class="">
+    <div class="container">
+        <h1 class="fw-normal border-bottom pt-3 pb-3">Fill the form below:</h1>
+        <form id="timer-form">
+            <div class="row">
+                <div class="col">
+                    <label for="form" class="form-label">Name <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" id="form1" placeholder="Wayne" aria-label="Timer title" />
+                    <small id="validate-message-one" class="text-danger"></small>
+                </div>
+                <div class="col">
+                    <label for="form2" class="form-label">Age <span class="text-danger">*</span></label>
+                    <input type="number" id="form2" class="form-control" placeholder="25" />
+                    <small id="validate-message-two" class="text-danger"></small>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <label for="form3" class="form-label">Work permit <span class="text-danger">*</span></label>
+                    <!-- <input type="text" class="form-control" id="form3" placeholder="True or false" /> -->
+                    <select class="form-control form-select" id="form3">
+                        <option selected disabled>Choose...</option>
+                        <option value="True">True</option>
+                        <option value="False">False</option>
+                    </select>
+                    <small id="validate-message-three" class="text-danger"></small>
+                </div>
+                <div class="col">
+                    <div class="row">
+                        <div class="col">
+                            <label for="form4" class="form-label">1st Language <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="form4" />
+                            <small id="validate-message-four" class="text-danger"></small>
+                        </div>
+
+                        <div class="col">
+                            <label for="form4" class="form-label">2nd Language</label>
+                            <input type="text" class="form-control" id="form5" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="submit d-flex justify-content-center align-items-center">
+                <button type="submit" class="btn btn-success mt-2">Next!</button>
+            </div>
+        </form>
+    </div>
+
+    <div>
+        <div class="review d-flex flex-column justify-content-center mx-5"></div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" 
+    integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" 
+    crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+
+        // Store all DOMs
+        const form = $("form");
+        const input1 = $("#form1");
+        const input2 = $("#form2");
+        const input3 = $("#form3");
+        const input4 = $("#form4");
+        const input5 = $("#form5");
+        const submitBtn = $("button");
+        const review = $(".review");
+
+        review.css("display", "none");
+
+        form.on("submit", (e) => {
+            e.preventDefault();
+            let isValid = true;
+
+            const name = input1.val().trim();
+            const age = input2.val().trim();
+            const workPermit = input3.val();
+            const languageOne = input4.val().trim();
+            const languageTwo = input5.val().trim();
+
+            if (name !== "" && isNaN(name)) {
+                $("#validate-message-one").html("");
+                input1.attr("class", "form-control is-valid");
+            } else {
+                input1.attr("class", "form-control is-invalid");
+                $("#validate-message-one").html("Please, fill in the form.");
+                isValid = false;
+            }
+
+            if (age !== "" && !isNaN(age)) {
+                $("#validate-message-two").html("");
+                input2.attr("class", "form-control is-valid");
+            } else {
+                input2.attr("class", "form-control is-invalid");
+                $("#validate-message-two").html("Please, fill in the form.");
+                isValid = false;
+            }
+
+            if (workPermit !== null && workPermit !== "Choose...") {
+                $("#validate-message-three").html("");
+                input3.attr("class", "form-control form-select is-valid");
+            } else {
+                input3.attr("class", "form-control form-select is-invalid");
+                $("#validate-message-three").html("Please, fill in the form.");
+                isValid = false;
+            }
+
+            if (languageOne !== "") {
+                $("#validate-message-four").html("");
+                input4.attr("class", "form-control is-valid");
+            } else {
+                input4.attr("class", "form-control is-invalid");
+                $("#validate-message-four").html("Please, fill in the form.");
+                isValid = false;
+            }
+
+            if (isValid) {
+                form.css("display", "none");
+                review.css("display", "block");
+
+                const newAge = parseInt(age);
+                const languages = [languageOne];
+                if (languageTwo !== "") {
+                    languages.push(languageTwo);
+                }
+
+                function NewEmployee(name, age, hasWorkPermit, languages) {
+                    this.name = name;
+                    this.age = age;
+                    this.hasWorkPermit = hasWorkPermit;
+                    this.languages = languages;
+                }
+
+                const newEmployee = new NewEmployee(name, newAge, workPermit, languages);
+
+                review.html(`
+                    <p>Name: <strong>${newEmployee.name}</strong></p>
+                    <p>Age: <strong>${newEmployee.age}yrs</strong></p>
+                    <p>Work permit: <strong>${newEmployee.hasWorkPermit}</strong></p>
+                    <p>Languages: <strong>${newEmployee.languages.join(' & ')}</strong></p>
+                `);
+            }
+        });
+    </script>
+</body>
+</html>

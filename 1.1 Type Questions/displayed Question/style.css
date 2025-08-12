@@ -1,0 +1,18 @@
+p {
+    font-size: large;
+}
+
+.quiz.animate {
+    animation: moveIn 2s ease;
+}
+
+@keyframes moveIn {
+    0% {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
